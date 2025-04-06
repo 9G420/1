@@ -3608,57 +3608,143 @@ details-disclosure > details {
     transform: translateX(100%) scaleX(0);
   }
 }
+:root {
+  --alpha-button-background: 1;
+  --alpha-button-border: 1;
+  --alpha-link: 0.85;
+  --alpha-badge-border: 0.1;
+  --focused-base-outline: 0.2rem solid rgba(var(--color-foreground), 0.5);
+  --focused-base-outline-offset: 0.3rem;
+  --focused-base-box-shadow: 0 0 0 0.3rem rgb(var(--color-background)), 0 0 0.5rem 0.4rem rgba(var(--color-foreground), 0.3);
+}
+
+/* 原有内容保持不变 */
+
+.product-card-wrapper .card,
+.contains-card--product {
+  --border-radius: var(--product-card-corner-radius);
+  --border-width: var(--product-card-border-width);
+  --border-opacity: var(--product-card-border-opacity);
+  --shadow-horizontal-offset: var(--product-card-shadow-horizontal-offset);
+  --shadow-vertical-offset: var(--product-card-shadow-vertical-offset);
+  --shadow-blur-radius: var(--product-card-shadow-blur-radius);
+  --shadow-opacity: var(--product-card-shadow-opacity);
+  --shadow-visible: var(--product-card-shadow-visible);
+  --image-padding: var(--product-card-image-padding);
+  --text-alignment: var(--product-card-text-alignment);
+}
+
+/* 其他样式保持不变 */
+
+/* 在第 3611 行开始添加新样式 */
 .header {
   display: flex;
-  justify-content: space-between;
+  justify-content: center; /* 确保内容在水平居中 */
   align-items: center;
+  padding: 0 20px; /* 添加内边距防止内容贴边 */
 }
 
 .header__left,
-.header__center,
 .header__right {
   display: flex;
   align-items: center;
+  flex: 1; /* 确保左右部分占据相等的空间 */
 }
 
 .header__center {
-  flex-grow: 1;
-  justify-content: center;
+  display: flex;
+  justify-content: center; 
+  flex: 1;
 }
 
 .header__search-form {
   display: flex;
   align-items: center;
-  width: 100%;
   max-width: 600px;
+  width: 100%;
   margin: 0 auto; /* 居中对齐 */
+}
+
+.header__search-wrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: #fff;
+  height: 38px; /* 设置高度以确保所有元素一致 */
 }
 
 .header__search-input {
   flex-grow: 1;
   padding: 0.5rem 1rem;
-  border: 1px solid #ccc;
-  border-right: none;
+  border: none;
+  outline: none;
+  height: 100%; /* 高度设为100% */
 }
 
 .header__search-category {
   padding: 0.5rem 1rem;
-  border: 1px solid #ccc;
-  border-left: none;
-  border-right: none;
+  border: none;
+  outline: none;
+  background-color: #f8f8f8;
+  height: 100%; /* 高度设为100% */
 }
 
 .header__search-button {
   background-color: #ccc;
   padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-left: none;
+  border: none;
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+  height: 100%; /* 高度设为100% */
 }
 
 .header__search-button .svg-wrapper {
-  width: 1rem;
-  height: 1rem;
+  width: 1.5rem; /* 调整放大镜图标的宽度 */
+  height: 1.5rem; /* 调整放大镜图标的高度 */
+}
+
+.header__search-button .svg-wrapper svg {
+  fill: #333;
+  width: 100%;
+  height: 100%;
+}
+
+/* 语言选择器样式调整 */
+.localization-form {
+  position: relative;
+}
+
+.localization-form select {
+  display: block;
+  width: 100%;
+}
+
+.localization-form .localization-form__dropdown {
+  position: absolute;
+  top: 100%; /* 确保下拉菜单在按钮下方 */
+  left: 0;
+  z-index: 9999;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: none; /* 默认隐藏 */
+}
+
+.localization-form select:focus + .localization-form__dropdown,
+.localization-form select:active + .localization-form__dropdown {
+  display: block; /* 显示下拉菜单 */
+}
+
+.localization-form__dropdown-item {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.localization-form__dropdown-item:hover {
+  background-color: #f0f0f0;
 }
