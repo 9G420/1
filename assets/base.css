@@ -6,7 +6,127 @@
   --focused-base-outline: 0.2rem solid rgba(var(--color-foreground), 0.5);
   --focused-base-outline-offset: 0.3rem;
   --focused-base-box-shadow: 0 0 0 0.3rem rgb(var(--color-background)), 0 0 0.5rem 0.4rem rgba(var(--color-foreground), 0.3);
+
+  /* Define black theme colors */
+  --color-background: 0, 0, 0; /* Black */
+  --color-foreground: 255, 255, 255; /* White */
+  --color-link: 255, 255, 255; /* White */
+  --color-button-background: 0, 0, 0; /* Black */
+  --color-button-text: 255, 255, 255; /* White */
 }
+
+/* Add body selector here */
+body {
+  background-color: rgb(var(--color-background));
+  color: rgb(var(--color-foreground));
+}
+
+/* Update link colors */
+a {
+  color: rgba(var(--color-link), var(--alpha-link));
+}
+
+a:hover {
+  color: rgb(var(--color-link));
+}
+
+/* Update button styles */
+button {
+  background-color: rgb(var(--color-button-background));
+  color: rgb(var(--color-button-text));
+  border: 1px solid rgba(var(--color-foreground), var(--alpha-button-border));
+}
+
+/* Update other components as needed */
+.product-card-wrapper .card,
+.contains-card--product,
+.collection-card-wrapper .card,
+.contains-card--collection,
+.article-card-wrapper .card,
+.contains-card--article,
+.contains-content-container,
+.content-container,
+.contains-media,
+.global-media-settings,
+header, footer, .header, .footer,
+.page-width, .page-width-desktop, .utility-bar__grid,
+h1, h2, h3, h4, h5, h6, p, span, div,
+table {
+  background-color: rgb(var(--color-background));
+  color: rgb(var(--color-foreground));
+}
+
+table td, table th {
+  border-color: rgba(var(--color-foreground), 0.2);
+}
+
+/* 原有内容保持不变 */
+.page-width {
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+body:has(.section-header .drawer-menu) .announcement-bar-section .page-width {
+  max-width: 100%;
+}
+
+.page-width.drawer-menu {
+  max-width: 100%;
+}
+
+.page-width-desktop {
+  padding: 0;
+  margin: 0 auto;
+}
+
+.utility-bar__grid.page-width {
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
+@media screen and (min-width: 750px) {
+  .page-width {
+    padding: 0 5rem;
+  }
+
+  .header.page-width,
+  .utility-bar__grid.page-width {
+    padding-left: 3.2rem;
+    padding-right: 3.2rem;
+  }
+
+  .page-width--narrow {
+    padding: 0 9rem;
+  }
+
+  .page-width-desktop {
+    padding: 0;
+  }
+
+  .page-width-tablet {
+    padding: 0 5rem;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .header:not(.drawer-menu).page-width {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+
+  .page-width--narrow {
+    max-width: 72.6rem;
+    padding: 0;
+  }
+
+  .page-width-desktop {
+    max-width: var(--page-width);
+    padding: 0 5rem;
+  }
+}
+
+/* 其他内容保持不变... */
 
 .product-card-wrapper .card,
 .contains-card--product {
